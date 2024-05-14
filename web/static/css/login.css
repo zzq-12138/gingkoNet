@@ -1,0 +1,62 @@
+.ht{
+    text-align: center;
+    color: rgba(245, 208, 63, 0.96);
+    font-family: 幼圆;
+}
+.tab{
+    width: 400px;
+    border: 5px solid cadetblue;
+    border-radius: 5px;
+    margin: 0px auto;
+    font-family: 幼圆;
+    background-color: aliceblue;
+}
+.ltr td{
+    border: 1px solid  powderblue;
+    height: 50px;
+
+}
+.ipt{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(208, 194, 146, 0.96);
+
+}
+.btn1{
+    border: 2px solid powderblue;
+    border-radius: 4px;
+    width:60px;
+    background-color: antiquewhite;
+
+}
+#usernameMsg01 , #usernameMsg02 , #userPwdMsg01 , #userPwdMsg02 {
+    color: #ea536f;
+}
+
+.buttonContainer{
+    text-align: center;
+}
+.msg {
+    color: gold;
+}
+
+.img{
+    height: 324px ;
+    width: 576px;
+    border-radius: 50%;
+    margin: 0px auto;
+    display: block;
+}
+
+body {
+    background-image: url('../img/foot.jpg'); /* 根据实际路径修改 */
+    background-position: top;
+    background-size: 700px;
+    background-repeat: no-repeat;
+}
+
+.empty-row {
+    height: 20px; /* 设置行的固定高度 */
+    display: block; /* 将行元素设置为块级元素 */
+}

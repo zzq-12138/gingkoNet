@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script src="static/js/login.js"></script>
+    <link rel="stylesheet" href="static/css/login.css">
+
+</head>
+<body>
+<h1 class="ht">银杏网盘</h1>
+<h3 class="ht">请注册</h3>
+<form method="post" action="/user/regist" onsubmit="return checkForm()">
+    <table class="tab" >
+        <tr class="ltr">
+            <td>请输入账号</td>
+            <td>
+                <input class="ipt" id="usernameInput" type="text" name="username" onblur="checkUsername()">
+                <span id="usernameMsg" class="msg"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td>请输入密码</td>
+            <td>
+                <input class="ipt" id="userPwdInput" type="password" name="userPwd" onblur="checkUserPwd()">
+                <span id="userPwdMsg" class="msg"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td>确认密码</td>
+            <td>
+                <input class="ipt" id="reUserPwdInput" type="password" onblur="checkReUserPwd()">
+                <span id="reUserPwdMsg" class="msg"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td colspan="2" class="buttonContainer">
+                <input class="btn1" type="submit" value="注册">
+                <input class="btn1" type="reset" value="重置">
+                <button class="btn1"><a  href="login.html">去登录</a></button>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+
+
+</body>
+</html>
