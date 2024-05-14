@@ -9,64 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2b12ba3-7aa7-44af-b637-e8bf2fd7b637" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/schedule_system_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/jdbc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/schedule_system.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/BaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/SysScheduleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/SysUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/dao/BaseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/dao/SysScheduleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/dao/SysUserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/dao/impl/SysScheduleDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/dao/impl/SysUserDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/pojo/SysSchedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/pojo/SysUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/SysScheduleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/SysUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/impl/SysScheduleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/test/TestBaseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/test/TestLombok.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/test/TestMD5Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/test/TestSysScheduleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/util/JDBCUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/util/MD5Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/aopalliance-1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/druid-1.1.21.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/guava-19.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/guice-4.1.0-no_aop.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/hamcrest-core-1.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/javax.inject-1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jcommander-1.72.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/junit-4.13.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/lombok-1.18.30.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-8.0.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/snakeyaml-1.21.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/testng-7.1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/loginUserPwdError.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/loginUsernameError.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/regist.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/registFail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/registSuccess.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/showSchedule.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/img/foot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/js/login.js" afterDir="false" />
-    </list>
+    <list default="true" id="a2b12ba3-7aa7-44af-b637-e8bf2fd7b637" name="Changes" comment="第三次提交" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,6 +18,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/zzq-12138/gingkoNet.git",
+    "accountId": "13af5f38-cba5-4587-8073-0e996340955e"
+  }
+}]]></component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -101,7 +50,7 @@
     "Tomcat Server.Tomcat 9.0.86.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/Java/JavaCode/schedule_system/web/WEB-INF/lib",
+    "last_opened_file_path": "F:/Java/JavaCode/schedule_system",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -235,8 +184,33 @@
       <updated>1715669243423</updated>
       <workItem from="1715669244501" duration="1002000" />
       <workItem from="1715676263847" duration="3552000" />
-      <workItem from="1715688341012" duration="1218000" />
+      <workItem from="1715688341012" duration="1627000" />
     </task>
+    <task id="LOCAL-00001" summary="第一次提交">
+      <option name="closed" value="true" />
+      <created>1715689855352</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715689855352</updated>
+    </task>
+    <task id="LOCAL-00002" summary="第二次提交">
+      <option name="closed" value="true" />
+      <created>1715689911681</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715689911681</updated>
+    </task>
+    <task id="LOCAL-00003" summary="第三次提交">
+      <option name="closed" value="true" />
+      <created>1715689953669</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715689953669</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +218,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="第一次提交" />
+    <MESSAGE value="第二次提交" />
+    <MESSAGE value="第三次提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="第三次提交" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
