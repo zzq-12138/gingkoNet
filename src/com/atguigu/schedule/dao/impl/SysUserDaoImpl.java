@@ -1,9 +1,7 @@
 package com.atguigu.schedule.dao.impl;
 
 import com.atguigu.schedule.dao.BaseDao;
-import com.atguigu.schedule.dao.SysScheduleDao;
 import com.atguigu.schedule.dao.SysUserDao;
-import com.atguigu.schedule.pojo.SysSchedule;
 import com.atguigu.schedule.pojo.SysUser;
 
 import java.util.List;

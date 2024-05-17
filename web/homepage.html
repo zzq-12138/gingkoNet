@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet">
+    <title>Title</title>
+    <style>
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 900px;
+            border-collapse: collapse;
+            border-radius: 10px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .upload {
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 630px;
+
+            .center;
+        }
+
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* 使容器占据整个视口的高度 */
+        }
+
+        .header {
+            padding: 0;
+            text-align: left;
+            background-color: lightblue;
+        }
+
+        .content-wrapper {
+            flex: 1; /* 占据剩余空间 */
+            display: flex; /* 使用flex布局 */
+        }
+
+        .sidebar {
+            background-color:whitesmoke;
+            padding: 20px;
+            width: 200px; /* 可以根据需要调整侧边栏的宽度 */
+        }
+
+        .main-content {
+            flex: 1; /* 占据剩余空间 */
+            padding: 20px;
+            background-color: #fff;
+            overflow: auto; /* 如果内容过多，允许滚动 */
+        }
+        aside {
+            width: 200px;
+            height: 100%;
+            background-color: #f0f0f0;
+            position: fixed;
+            overflow-y: auto; /* 如果内容过多，允许滚动 */
+        }
+
+        /* 导航链接样式 */
+        aside nav ul {
+            list-style-type: none;
+        }
+
+        aside nav ul li {
+            margin-bottom: 10px;
+        }
+
+        aside nav ul li a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        /* 导航链接点击时或鼠标悬停时的样式 */
+        aside nav ul li a:hover,
+        aside nav ul li a:active {
+            background-color:gold;
+        }
+        .el-button {
+            display: inline-block;
+            padding: 6px 15px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            margin-right: 5px; /* 按钮之间的间距 */
+        }
+
+        .el-button-primary {
+            background-color: #409EFF; /* 蓝色，模拟下载按钮 */
+        }
+
+        .el-button-danger {
+            background-color: #F56C6C; /* 红色，模拟删除按钮 */
+        }
+        .el-button-primary1{
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1  style="text-align: left;margin-left: 50px" class="center" th:text="${username}"> <span style="text-align: left;font-family: 'Comic Sans MS', cursive;">的文件</span></h1>
+    </header>
+    <div class="content-wrapper">
+        <aside class="sidebar">
+
+            <nav>
+                <ul>
+                    <li><a  class="logout" href="/logout" style="color: cadetblue;font-family: 'Comic Sans MS', cursive;font-size: 25px">
+                        退出登录
+                    </a>
+                    </li>
+                    <li><a   href="/login.html" style="color: cadetblue;font-family: 'Comic Sans MS', cursive;font-size: 25px">
+                        重新登录
+                    </a>
+                    </li>
+                    <li><a  href="/regist.html" style="color: cadetblue;font-family: 'Comic Sans MS', cursive;font-size: 25px">
+                        注册新用户
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content" style="background-color: lightgoldenrodyellow">
+            <table>
+                <tr>
+                    <th>文件名</th>
+                    <th colspan="2">操作</th>
+
+                </tr>
+                <tr th:each="f:${allFiles}">
+                    <td th:text="${f.getName()}">文件名</td>
+                    <td><a class="el-button el-button-primary" th:href="@{/download(fileName=${f.getName()})}">下载</a></td>
+                    <td><a class="el-button el-button-danger" th:href="@{/deleteFile(fileName=${f.getName()})}">删除</a></td>
+                </tr>
+            </table>
+
+            <form style="font-family: 'Comic Sans MS', cursive;" class="upload" action="upload" method="post" enctype="multipart/form-data">
+                上传文件:<input type="file" name="myfile"/>
+                重命名:<input type="text" name="fileName"/>
+                <button class="el-button-primary1" style="border-radius: 4px;font-family: 'Comic Sans MS', cursive;font-size: 15px" type="submit">上传文件</button>
+            </form>
+        </main>
+    </div>
+</div>
+</body>
+</html>

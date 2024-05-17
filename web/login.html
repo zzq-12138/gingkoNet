@@ -1,22 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <style>
+        .ht{
+            text-align: center;
+            color: black;
+            font-family: 幼圆, serif;
+            /*设置字体加测*/
+            font-weight: bold;
+        }
+        .tab-login {
+            margin-top: 15px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+            border-radius: 10px;
+            font-family: 幼圆, serif;
+            background-color: rgba(255, 255, 255, 0);
+        }
 
-    <link rel="stylesheet" href="static/css/login.css">
-    <script src="static/js/login.js"></script>
+        .tab{
+            width: 350px;
+            border: 3px solid rgba(246, 223, 130, 0.96);
+            border-radius: 10px;
+            margin: 0 auto;
+            font-family: 幼圆, serif ;
+            background-color: #ffffff;
+        }
+        .ltr td{
+            height: 50px;
 
+        }
+        .ipt{
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(208, 194, 146, 0.96);
+            font-size: 20px;
+        }
+        .btn{
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(208, 194, 146, 0.96);
+            font-size: 20px;
+            background-color: rgba(246, 223, 130, 0.96);
+        }
+        .btn1{
+            border: 2px solid powderblue;
+            border-radius: 4px;
+            width:60px;
+            background-color: antiquewhite;
+        }
+
+        #usernameMsg01, #usernameMsg02, #userPwdMsg01, #userPwdMsg02, #reUserPwdMsg01, #reUserPwdMsg02{
+            color: #ea536f;
+            font-size: 12px;
+        }
+
+        .buttonContainer{
+            text-align: center;
+        }
+
+        body {
+            background-image: url('/static/img/ginkgo.jpg'); /* 根据实际路径修改 */
+            background-position: top;
+            background-size: 750px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;  /*背景图片固定*/
+            background-color: #5b4a13;
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        .empty-row {
+            height: 12px;
+            display: block; /* 将行元素设置为块级元素 */
+        }
+
+        .empty-col {
+            height: 10px; /* 设置列的固定宽度 */
+        }
+    </style>
+
+    <script>
+        // 校验用户名密码是否符合格式
+        function checkForm() {
+            var flag1 = checkUsername();
+            var flag2 = checkUserPwd();
+            return flag1 && flag2;
+        }
+
+        // 校验用户名是否符合格式
+        function checkUsername() {
+            // 定义正则表示字符串的规则,用户名必须以字母开头，长度在5-16之间,并且只能是字母数字下划线
+            var usernameReg = /^[a-zA-Z]\w{4,15}$/;
+            // 获得用户输入的信息
+            var usernameInput = document.getElementById("usernameInput");
+            var username = usernameInput.value;
+            // 获得格式提示的框
+            var usernameMsg01 = document.getElementById("usernameMsg01");
+            var usernameMsg02 = document.getElementById("usernameMsg02");
+            // 格式有误返回false，在页面上提示
+            if(!usernameReg.test(username)){
+                usernameMsg01.innerHTML = "提示:";
+                usernameMsg02.innerHTML = "必须以字母开头且长度在5-10之间";
+                return false;
+            }
+            // 格式正确时,返回true，在页面上提示OK
+            usernameMsg01.innerText="";
+            usernameMsg02.innerText="OK";
+            return true;
+        }
+
+        // 校验密码是否符合格式
+        function checkUserPwd(){
+            // 定义正则表示字符串的规则
+            var  userPwdReg= /^[0-9]{6}$/;
+            // 获得用户在页面上输入的信息
+            var userPwdInput =document.getElementById("userPwdInput");
+            var userPwd = userPwdInput.value;
+            // 获得格式提示的框
+            var userPwdMsg01 =document.getElementById("userPwdMsg01");
+            var userPwdMsg02 =document.getElementById("userPwdMsg02");
+            // 格式有误时,返回false,在页面上提示
+            if(!userPwdReg.test(userPwd)){
+                userPwdMsg01.innerText="提示:";
+                userPwdMsg02.innerText="必须是6位数字";
+                return false;
+            }
+            // 格式正确时,返回true，在页面上提示OK
+            userPwdMsg01.innerText="";
+            return true;
+
+        }
+
+        //校验两次密码是否一致
+        function reCheckReUserPwd() {
+            var userPwdInput = document.getElementById("userPwdInput");
+            var userPwd = userPwdInput.value;
+            var userPwd2Input = document.getElementById("reUserPwdInput");
+            var userPwd2 = userPwd2Input.value;
+            var reUserPwdMsg01 = document.getElementById("reUserPwdMsg01");
+            var reUserPwdMsg02 = document.getElementById("reUserPwdMsg02");
+            if (userPwd !== userPwd2) {
+                reUserPwdMsg01.innerText = "提示:";
+                reUserPwdMsg02.innerText = "两次密码不一致";
+                return false;
+            }
+            reUserPwdMsg01.innerText = "";
+            reUserPwdMsg02.innerText = "OK";
+            return true;
+        }
+
+        //鼠标在登录按钮上悬停时，改变按钮的颜色,鼠标移开时恢复颜色,鼠标变为手型
+        function changeBtnColor() {
+            var Btn = document.getElementById("Btn");
+            Btn.style.backgroundColor = "#6c5f1a";
+            Btn.style.cursor = "pointer";
+        }
+
+        //鼠标移开时恢复按钮颜色
+        function recoverBtnColor() {
+            var Btn = document.getElementById("Btn");
+            Btn.style.backgroundColor = "#ffd700";
+        }
+
+        function changeBtn1Color(){
+            var Btn1 = document.getElementById("Btn1");
+            Btn1.style.backgroundColor = "#6c5f1a";
+            Btn1.style.cursor = "pointer";
+        }
+
+        function recoverBtn1Color(){
+            var Btn1 = document.getElementById("Btn1");
+            Btn1.style.backgroundColor = "antiquewhite";
+        }
+
+        function changeBtn2Color(){
+            var Btn2 = document.getElementById("Btn2");
+            Btn2.style.backgroundColor = "#6c5f1a";
+            Btn2.style.cursor = "pointer";
+        }
+
+        function recoverBtn2Color(){
+            var Btn2 = document.getElementById("Btn2");
+            Btn2.style.backgroundColor = "antiquewhite";
+        }
+
+    </script>
 </head>
 <body>
 
-<h1 class="ht">银杏网盘</h1>
-<h3 class="ht">请登录</h3>
-
+<table class="tab-login">
+    <tr>
+        <td>
+            <h1 class="ht">银杏网盘</h1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3 class="ht">欢迎注册</h3>
+        </td>
+    </tr>
+</table>
 <form method="post" action="/user/login" onsubmit="return checkForm()">
     <table class="tab">
+        <tr class="empty-col">
+        </tr>
         <tr class="ltr">
-            <td>账号</td>
+            <td> 账号</td>
             <td>
                 <input class="ipt" type="text" id="usernameInput" name="username" onblur="checkUsername()">
             </td>
@@ -28,6 +223,7 @@
             <td>
                 <span id="usernameMsg02" class="empty-row"></span>
             </td>
+        </tr>
         <tr class="ltr">
             <td>密码</td>
             <td>
@@ -38,14 +234,19 @@
                 <span id="userPwdMsg01" class="empty-row"></span>
             </td>
             <td>
-               <span id="userPwdMsg02" class="empty-row"></span>
+                <span id="userPwdMsg02" class="empty-row" th:text="${errorMsg}"></span>
+                <br>
             </td>
         </tr>
         <tr class="ltr">
             <td colspan="2" class="buttonContainer">
-                <input class="btn1" type="submit" value="登录">
-                <input class="btn1" type="reset" value="重置">
-                <button class="btn1"><a href="regist.html">注册</a></button>
+                <input class="btn" type="submit" value="登录" id="Btn" autofocus onmouseover="changeBtnColor()" onmouseleave="recoverBtnColor()" >
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td colspan="2" class="buttonContainer">
+                <input class="btn1" type="reset" value="重置" id="Btn1" onmouseover="changeBtn1Color()" onmouseleave="recoverBtn1Color()">
+                <button class="btn1" id="Btn2" onmouseover="changeBtn2Color()" onmouseleave="recoverBtn2Color()"><a href="regist.html">注册</a></button>
             </td>
         </tr>
     </table>
