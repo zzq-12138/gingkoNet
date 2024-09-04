@@ -12,7 +12,7 @@
   </head>
   <body>
   <p>欢迎来到我的网盘，请选择登录或注册。</p>
-  <a href="http://121.36.97.80:8080/schedule_system/html/regist.html">登录</a>
-  <a href="http://121.36.97.80:8080/schedule_system/html/regist.html">注册</a>
+  <a href="http://121.36.97.80:8080/schedule_sql/html/regist.html">登录</a>
+  <a href="http://121.36.97.80:8080/schedule_sql/html/regist.html">注册</a>
   </body>
 </html>

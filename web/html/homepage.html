@@ -10,8 +10,8 @@
 <body>
 <div id="loginModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid black; border-radius: 10px; text-align: center;">
     <p>您尚未登录，请先登录或注册。</p>
-    <a href="http://121.36.97.80:8080/schedule_system/html/login.html">登录</a>
-    <a href="http://121.36.97.80:8080/schedule_system/html/regist.html">注册</a>
+    <a href="http://121.36.97.80:8080/schedule_sql/html/login.html">登录</a>
+    <a href="http://121.36.97.80:8080/schedule_sql/html/regist.html">注册</a>
 </div>
 <div class="container">
     <header class="header">
@@ -21,7 +21,7 @@
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li><a id="logoutButton" class="logout" href="/schedule_system/user/logout" style="color: cadetblue; font-family: 'Comic Sans MS', cursive; font-size: 25px;">退出登录</a></li>
+                    <li><a id="logoutButton" class="logout" href="/schedule_sql/user/logout" style="color: cadetblue; font-family: 'Comic Sans MS', cursive; font-size: 25px;">退出登录</a></li>
                 </ul>
             </nav>
         </aside>
@@ -37,7 +37,7 @@
                     <td><a class="el-button el-button-danger" th:href="@{file/delete(fileName=${f.getName()})}">删除</a></td>
                 </tr>
             </table>
-            <form class="upload" action="/schedule_system/file/upload" method="post" enctype="multipart/form-data" style="font-family: 'Comic Sans MS', cursive;">
+            <form class="upload" action="/schedule_sql/file/upload" method="post" enctype="multipart/form-data" style="font-family: 'Comic Sans MS', cursive;">
                 上传文件:<input type="file" name="myFile" id="myFile" onchange="checkFile()"/>
                 重命名:<input type="text" name="fileName" id="fileName"/>
                 <button class="el-button-primary1" type="button" id="uploadButton" onclick="uploadFile()" disabled style="border-radius: 4px; font-family: 'Comic Sans MS', cursive; font-size: 15px;">上传文件</button>

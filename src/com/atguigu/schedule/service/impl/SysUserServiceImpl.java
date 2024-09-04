@@ -9,22 +9,21 @@ import com.atguigu.schedule.util.MD5Util;
 public class SysUserServiceImpl implements SysUserService {
 
     private SysUserDao userDao = new SysUserDaoImpl();
-
     @Override
     public int regist(SysUser sysUser) {
-
-        // 将用户的明文密码加密为密文密码
-        sysUser.setUserPwd(MD5Util.encrypt(sysUser.getUserPwd()));
-
-        // 调用dao层方法，将用户信息保存到数据库
-        // 返回值为受影响的行数
-
+        // 直接使用明文密码进行注册
         return userDao.addSysUser(sysUser);
+        // 将用户的明文密码加密为密文密码
+        // sysUser.setUserPwd(MD5Util.encrypt(sysUser.getUserPwd()));
     }
 
     @Override
     public SysUser findByUsername(String username) {
-
         return userDao.findByUsername(username);
+    }
+
+    @Override
+    public SysUser findByNamePwd(String username, String userPwd) {
+        return userDao.findByNamePwd(username, userPwd);
     }
 }

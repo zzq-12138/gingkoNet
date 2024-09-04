@@ -22,4 +22,6 @@ public interface SysUserDao {
      * @return 返回查询到的用户信息，如果没有查询到则返回null
      */
     SysUser findByUsername(String username);
+
+    SysUser findByNamePwd(String username, String userPwd);
 }

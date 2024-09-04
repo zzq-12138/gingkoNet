@@ -36,26 +36,29 @@ public class SysUserController extends BaseController {
         // 1.接收客户端提交的参数
         String username = req.getParameter("username");
         String userPwd = req.getParameter("userPwd");
-
-        // 2.调用服务层方法，根据用户名和密码查询用户信息
-        SysUser loginUser = userService.findByUsername(username);
-        if (null == loginUser || !MD5Util.encrypt(userPwd).equals(loginUser.getUserPwd())) {
-            req.setAttribute("errorMsg", "登录失败，请检查邮箱及密码是否正确！");
+//      //2.调用服务层方法，根据用户名和密码查询用户信息
+//        SysUser loginUser = userService.findByUsername(username);
+//        if (null == loginUser || !MD5Util.encrypt(userPwd).equals(loginUser.getUserPwd())) {
+//            req.setAttribute("errorMsg", "登录失败，请检查邮箱及密码是否正确！");
+//            super.processTemplate("login", req, resp);
+//        } else {
+        SysUser loginUser = userService.findByNamePwd(username,userPwd);
+        if (null == loginUser || loginUser.getUsername() == null) {
+            req.setAttribute("errorMsg", "登录失败，请检查用户名及密码是否正确！");
             super.processTemplate("login", req, resp);
         } else {
             HttpSession oldSession = req.getSession(false);
             if (oldSession != null) {
                 // 如果存在旧的会话，使其失效
                 oldSession.invalidate();
-
             }
             // 创建新的会话
             HttpSession newSession = req.getSession(true);
-            // 在新的会话中设置用户名
-            newSession.setAttribute("username", username);
+            // 在新的会话中设置用户名为查询到的用户名
+            newSession.setAttribute("username", loginUser.getUsername());
 
             // 登录成功则重定向到List
-            resp.sendRedirect("/schedule_system/file/list");
+            resp.sendRedirect("/schedule_sql/file/list");
         }
     }
     /**
@@ -78,7 +81,7 @@ public class SysUserController extends BaseController {
         if (rows > 0) {
             // 注册成功
             // 3.根据注册结果做页面跳转
-            resp.sendRedirect("/schedule_system/registSuccess.html");
+            resp.sendRedirect("/schedule_sql/html/registSuccess.html");
         } else {
             // 注册失败，设置错误信息并转发回注册页面
             String errorMsg = "注册失败，该用户名已被抢注，或两次密码输入不一致";
@@ -104,7 +107,7 @@ public class SysUserController extends BaseController {
         }
 
         // 重定向到登录页面
-        resp.sendRedirect("/schedule_system/html/login.html");
+        resp.sendRedirect("/schedule_sql/html/login.html");
     }
 
     protected void checkLogin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -1,6 +1,7 @@
 package com.atguigu.schedule.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 public final class MD5Util {
     public static String encrypt(String strSrc) {
         try {

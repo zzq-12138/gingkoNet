@@ -4,7 +4,7 @@ window.onload = function() {
 
 function checkLoginStatus() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/schedule_system/user/checkLogin', true);
+    xhr.open('GET', '/schedule_sql/user/checkLogin', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
@@ -42,15 +42,6 @@ function checkFile() {
     }
 }
 
-function checkFileName(fileName) {
-    // 验证文件名是否合格
-    if (fileName.includes("..") || fileName.startsWith(".")) {
-        alert("文件名不合格，请重新上传");
-        return false;
-    }
-    return true;
-}
-
 function uploadFile() {
     var fileInput = document.getElementById('myFile');
     var uploadButton = document.getElementById('uploadButton');
@@ -59,22 +50,14 @@ function uploadFile() {
     var progressBar = document.getElementById('uploadProgress');
     var uploadStatus = document.getElementById('uploadStatus');
     var cancelButton = document.getElementById('cancelButton');
-    var fileName = fileInput.files[0].name;
-    var newFileName = document.getElementById('fileName').value;
-    if (newFileName) {
-        fileName = newFileName;
-    }
 
-    if (!checkFileName(fileName)) {
-        return;
-    }
 
     var formData = new FormData();
     formData.append('myFile', fileInput.files[0]);
     formData.append('fileName', newFileNameInput.value); // 将重命名字段的值添加到表单数据中
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/schedule_system/file/upload', true);
+    xhr.open('POST', '/schedule_sql/file/upload', true);
 
     xhr.upload.onprogress = function (event) {
         if (event.lengthComputable) {
@@ -96,12 +79,12 @@ function uploadFile() {
             var overwrite = confirm('文件已经存在，是否要覆盖文件？');
             if (overwrite) {
                 formData.append('overwrite', 'true');
-                xhr.open('POST', '/schedule_system/file/upload', true);
+                xhr.open('POST', '/schedule_sql/file/upload', true);
                 xhr.send(formData);
             } else {
                 var newFileName = prompt('请输入新的文件名：');
                 formData.set('fileName', newFileName); // 更新表单数据中的文件名
-                xhr.open('POST', '/schedule_system/file/upload', true);
+                xhr.open('POST', '/schedule_sql/file/upload', true);
                 xhr.send(formData);
             }
         } else if (xhr.status === 200) {

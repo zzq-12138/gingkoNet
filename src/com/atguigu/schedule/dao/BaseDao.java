@@ -53,69 +53,92 @@ public class BaseDao {
         return t;
     }
     // 公共的查询方法  返回的是对象的集合
-
-    public <T> List<T> baseQuery(Class clazz, String sql, Object ... args){
-        List<T> list =new ArrayList<>();
+    public <T> List<T> baseQuery(Class<T> clazz, String sql, Object ... args) {
+        List<T> list = new ArrayList<>();
         Connection connection = JDBCUtil.getConnection();
-        PreparedStatement preparedStatement=null;
-        ResultSet resultSet =null;
-        int rows = 0;
+        Statement statement = null;
+        ResultSet resultSet = null;
         try {
-            // 准备语句对象
-            preparedStatement = connection.prepareStatement(sql);
-            // 设置语句上的参数
-            for (int i = 0; i < args.length; i++) {
-                preparedStatement.setObject(i+1,args[i]);
-            }
-
-            // 执行 查询
-            resultSet = preparedStatement.executeQuery();
-
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
             ResultSetMetaData metaData = resultSet.getMetaData();
             int columnCount = metaData.getColumnCount();
-
-            // 将结果集通过反射封装成实体类对象
             while (resultSet.next()) {
-                // 使用反射实例化对象
-                Object obj =clazz.getDeclaredConstructor().newInstance();
-
+                T obj = clazz.getDeclaredConstructor().newInstance();
                 for (int i = 1; i <= columnCount; i++) {
                     String columnName = metaData.getColumnLabel(i);
-                    Object value = resultSet.getObject(columnName);
-                    // 处理datetime类型字段和java.util.Data转换问题
-                    if(value.getClass().equals(LocalDateTime.class)){
-                        value= Timestamp.valueOf((LocalDateTime) value);
+                    if ("username".equals(columnName)) {
+                        Object value = resultSet.getObject(columnName);
+                        Field field = clazz.getDeclaredField(columnName);
+                        field.setAccessible(true);
+                        field.set(obj, value);
                     }
-                    Field field = clazz.getDeclaredField(columnName);
-                    field.setAccessible(true);
-                    field.set(obj,value);
                 }
-
-                list.add((T)obj);
+                list.add(obj);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (null !=resultSet) {
+            if (resultSet != null) {
                 try {
                     resultSet.close();
                 } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
             }
-            if (null != preparedStatement) {
+            if (statement != null) {
                 try {
-                    preparedStatement.close();
+                    statement.close();
                 } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
             }
             JDBCUtil.releaseConnection();
         }
         return list;
     }
+    /*public <T> T baseQueryObject(Class<T> clazz, String sql, Object ... args) {
+        T t = null;
+        Connection connection = JDBCUtil.getConnection();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        int rows = 0;
+        try {
+            // 准备语句对象
+            preparedStatement = connection.prepareStatement(sql);
+            // 设置语句上的参数
+            for (int i = 0; i < args.length; i++) {
+                preparedStatement.setObject(i + 1, args[i]);
+            }
 
+            // 执行 查询
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                t = (T) resultSet.getObject(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (null != resultSet) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (null != preparedStatement) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            JDBCUtil.releaseConnection();
+        }
+        return t;
+    }
+*/
     // 通用的增删改方法
     public int baseUpdate(String sql,Object ... args) {
         // 获取连接

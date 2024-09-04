@@ -15,7 +15,6 @@ import java.net.URLEncoder;
 public class SysFileController extends BaseController {
 
     private final SysFileServiceImpl fileService = new SysFileServiceImpl();
-    private static final String UPLOAD_DIR = "/home/upload"; // 修改为所需的目录
 
     /**
      * 读取文件列表
@@ -27,7 +26,7 @@ public class SysFileController extends BaseController {
      */
     protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userName = (String) req.getSession().getAttribute("username");
-        String workDir = UPLOAD_DIR + "/" + userName;
+        String workDir = getServletContext().getRealPath("/upload/") + userName;
 
         System.out.println(workDir);
         File file = new File(workDir);
@@ -68,7 +67,7 @@ public class SysFileController extends BaseController {
             fileName = newFileName;
         }
 
-        String realPath = UPLOAD_DIR + "/" + userName;
+        String realPath = req.getServletContext().getRealPath("/upload/" + userName + "/");
 
         // 检查用户的文件夹是否存在，如果不存在，那么创建一个新的文件夹
         File dir = new File(realPath);
@@ -83,6 +82,7 @@ public class SysFileController extends BaseController {
                 file.delete();
                 // 保存新的文件
                 myFile.write(realPath + "/" + fileName);
+//                System.out.println(realPath + "/" + fileName);
             } else {
                 // 文件已经存在，返回一个特殊的响应
                 resp.setStatus(HttpServletResponse.SC_CONFLICT);
@@ -111,7 +111,7 @@ public class SysFileController extends BaseController {
         String fileName = req.getParameter("fileName");
         String userPath = getServletContext().getRealPath("/upload");
         String userName = (String) req.getSession().getAttribute("username");
-        File file = new File(UPLOAD_DIR + "/" + userName + "/" + fileName);
+        File file = new File(userPath + "/" + userName + "/" + fileName);
 
         if (file.exists() && file.isFile()) {
             file.delete();
@@ -132,14 +132,7 @@ public class SysFileController extends BaseController {
         // 获取用户名
         String userName = (String) req.getSession().getAttribute("username");
         // 构造文件路径
-        String filePath = UPLOAD_DIR + "/" + userName + "/" + fileName;
-
-        if (!filePath.startsWith(UPLOAD_DIR + "/" + userName + "/")) {
-            resp.setContentType("text/html;charset=UTF-8");
-            resp.getWriter().write("<h2>路径有误</h2>");
-            resp.getWriter().close();
-            return;
-        }
+        String filePath = userPath + "/" + userName + "/" + fileName;
 
         File file = new File(filePath);
         if (file.exists() && file.isFile()) {
