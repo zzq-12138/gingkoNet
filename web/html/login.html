@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/login.js"></script>
+</head>
+<body>
+
+<table class="tab-login">
+    <tr>
+        <td>
+            <h1 class="ht">银杏网盘</h1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3 class="ht">欢迎登录</h3>
+        </td>
+    </tr>
+</table>
+<form method="post" action="/schedule_system/user/login" onsubmit="return checkForm()">
+    <table class="tab">
+        <tr class="empty-col">
+        </tr>
+        <tr class="ltr">
+            <td> 账号</td>
+            <td>
+                <input class="ipt" type="text" id="usernameInput" name="username" onblur="checkUsername()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="usernameMsg01" class="empty-row"></span>
+            </td>
+            <td>
+                <span id="usernameMsg02" class="empty-row"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td>密码</td>
+            <td>
+                <input class="ipt" type="password" id="userPwdInput"  name="userPwd" onblur="checkUserPwd()">
+            </td>
+        <tr>
+            <td>
+                <span id="userPwdMsg01" class="empty-row"></span>
+            </td>
+            <td>
+                <span id="userPwdMsg02" class="empty-row" th:text="${errorMsg}"></span>
+                <br>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td colspan="2" class="buttonContainer">
+                <input class="btn" type="submit" value="登录" id="Btn" autofocus onmouseover="changeBtnColor()" onmouseleave="recoverBtnColor()" >
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td colspan="2" class="buttonContainer">
+                <input class="btn1" type="reset" value="重置" id="Btn1" onmouseover="changeBtn1Color()" onmouseleave="recoverBtn1Color()">
+                <button class="btn1" id="Btn2" onmouseover="changeBtn2Color()" onmouseleave="recoverBtn2Color()"><a href="http://121.36.97.80:8080/schedule_system/html/regist.html">去注册</a></button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

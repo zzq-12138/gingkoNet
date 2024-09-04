@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class BaseController extends HttpServlet {
+public class BaseController extends ViewBaseServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -25,7 +25,6 @@ public class BaseController extends HttpServlet {
             method.invoke(this,req,resp);
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="../css/regist.css">
+    <script src="../js/regist.js"></script>
+
+
+</head>
+<body>
+<table class="tab-register">
+    <tr>
+        <td>
+            <h1 class="ht">银杏网盘</h1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3 class="ht">欢迎注册</h3>
+        </td>
+    </tr>
+</table>
+
+<form method="post" action="/schedule_system/user/regist" onsubmit="return checkForm()">
+    <table class="tab" >
+        <tr class="ltr">
+            <td>请输入账号</td>
+            <td>
+                <input class="ipt" type="text" id="usernameInput" name="username" onblur="checkUsername()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="usernameMsg01" class="empty-row"></span>
+            </td>
+            <td>
+                <span id="usernameMsg02" class="empty-row"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td>请输入密码</td>
+            <td>
+                <input class="ipt" type="password" id="userPwdInput"  name="userPwd" oninput="checkPasswordMatch()" onblur="checkUserPwd()">            </td>
+        <tr>
+            <td>
+                <span id="userPwdMsg01" class="empty-row"></span>
+            </td>
+            <td>
+                <span id="userPwdMsg02" class="empty-row"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td>确认密码</td>
+            <td>
+                <input class="ipt" id="reUserPwdInput" type="password" name="reUserPwd" oninput="checkPasswordMatch()" onblur="reCheckReUserPwd()" >
+            </td>
+        <tr>
+            <td>
+                <span id="reUserPwdMsg01" class="empty-row"></span>
+            </td>
+            <td>
+                <span id="reUserPwdMsg02" class="empty-row"  th:text="${errorMsg}" ></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td colspan="2" class="buttonContainer">
+                <input class="btn" type="submit" value="注册" id="Btn" autofocus onmouseover="changeBtnColor()" onmouseleave="recoverBtnColor()">
+                <input class="btn1" type="reset" value="重置" id="Btn1" onmouseover="changeBtn1Color()" onmouseleave="recoverBtn1Color()">
+                <button class="btn1" id="Btn2" onmouseover="changeBtn2Color()" onmouseleave="recoverBtn2Color()"><a  href="http://121.36.97.80:8080/schedule_system/html/login.html">去登录</a></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="finalErrorMsg" class="empty-row" style="display: none;" >两次输入的密码不一致</span>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+
+
+</body>
+</html>
