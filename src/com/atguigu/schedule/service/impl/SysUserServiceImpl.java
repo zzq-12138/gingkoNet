@@ -13,7 +13,6 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public int regist(SysUser sysUser) {
 
-
         // 将用户的明文密码加密为密文密码
         sysUser.setUserPwd(MD5Util.encrypt(sysUser.getUserPwd()));
 

@@ -1,0 +1,79 @@
+.ht{
+    text-align: center;
+    color: black;
+    font-family: 幼圆, serif;
+    /*设置字体加测*/
+    font-weight: bold;
+}
+.tab-login {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    border-radius: 10px;
+    font-family: 幼圆, serif;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.tab{
+    width: 350px;
+    border: 3px solid rgba(246, 223, 130, 0.96);
+    border-radius: 10px;
+    margin: 0 auto;
+    font-family: 幼圆, serif ;
+    background-color: #ffffff;
+}
+.ltr td{
+    height: 50px;
+
+}
+.ipt{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(208, 194, 146, 0.96);
+    font-size: 20px;
+}
+.btn{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(208, 194, 146, 0.96);
+    font-size: 20px;
+    background-color: rgba(246, 223, 130, 0.96);
+}
+.btn1{
+    border: 2px solid powderblue;
+    border-radius: 4px;
+    width:60px;
+    background-color: antiquewhite;
+}
+
+#usernameMsg01, #usernameMsg02, #userPwdMsg01, #userPwdMsg02, #reUserPwdMsg01, #reUserPwdMsg02{
+    color: #ea536f;
+    font-size: 12px;
+}
+
+.buttonContainer{
+    text-align: center;
+}
+
+body {
+    background-image: url('/schedule_system/img/ginkgo.jpg'); /* 根据实际路径修改 */
+    background-position: top;
+    background-size: 750px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  /*背景图片固定*/
+    background-color: #5b4a13;
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.empty-row {
+    height: 12px;
+    display: block; /* 将行元素设置为块级元素 */
+}
+
+.empty-col {
+    height: 10px; /* 设置列的固定宽度 */
+}

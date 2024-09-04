@@ -28,7 +28,7 @@ public class ViewBaseServlet extends HttpServlet {
         // ②设置前缀
 
         // String viewPrefix = servletContext.getInitParameter("viewprefix");
-        String viewPrefix = "/";
+        String viewPrefix = "/html/";
         templateResolver.setPrefix(viewPrefix);
         // ③设置后缀
         // String viewSuffix = servletContext.getInitParameter("viewsuffix");
