@@ -4,16 +4,13 @@ import com.atguigu.schedule.pojo.SysUser;
 import com.atguigu.schedule.service.SysUserService;
 import com.atguigu.schedule.service.impl.SysUserServiceImpl;
 import com.atguigu.schedule.util.MD5Util;
-import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.net.URLEncoder;
 
 @WebServlet("/user/*")
 public class SysUserController extends BaseController {
@@ -55,7 +52,7 @@ public class SysUserController extends BaseController {
             newSession.setAttribute("username", username);
 
             // 登录成功则重定向到List
-            resp.sendRedirect("/schedule_system/file/list");
+            resp.sendRedirect("/schedule_xss/file/list");
         }
     }
     /**
@@ -78,7 +75,7 @@ public class SysUserController extends BaseController {
         if (rows > 0) {
             // 注册成功
             // 3.根据注册结果做页面跳转
-            resp.sendRedirect("/schedule_system/registSuccess.html");
+            resp.sendRedirect("/schedule_xss/registSuccess.html");
         } else {
             // 注册失败，设置错误信息并转发回注册页面
             String errorMsg = "注册失败，该用户名已被抢注，或两次密码输入不一致";
@@ -104,7 +101,7 @@ public class SysUserController extends BaseController {
         }
 
         // 重定向到登录页面
-        resp.sendRedirect("/schedule_system/html/login.html");
+        resp.sendRedirect("/schedule_xss/html/login.html");
     }
 
     protected void checkLogin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

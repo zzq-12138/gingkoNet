@@ -116,3 +116,20 @@ function uploadFile() {
     };
     xhr.send(formData);
 }
+
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var query = document.querySelector('input[name="query"]').value;
+    fetch('/schedule_system/file/search?query=' + encodeURIComponent(query))
+        .then(response => response.json())
+        .then(data => {
+            // 处理搜索结果
+            var resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+            data.forEach(file => {
+                var fileElement = document.createElement('div');
+                fileElement.textContent = file.fileName;
+                resultsContainer.appendChild(fileElement);
+            });
+        });
+});

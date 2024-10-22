@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="schedule_xss">
+    <output-path>$PROJECT_DIR$/out/artifacts/schedule_xss</output-path>
+    <root id="archive" name="schedule_xss.war">
+      <element id="artifact" artifact-name="schedule_system:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

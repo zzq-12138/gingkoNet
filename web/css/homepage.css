@@ -112,3 +112,18 @@ aside nav ul li a:active {
 .el-button-primary1 {
     background-color: gold;
 }
+
+#searchForm {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+#searchForm input[type="text"] {
+    padding: 5px;
+    font-size: 14px;
+}
+#searchForm button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}

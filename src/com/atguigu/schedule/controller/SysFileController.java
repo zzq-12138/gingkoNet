@@ -3,19 +3,27 @@ package com.atguigu.schedule.controller;
 import com.atguigu.schedule.service.impl.SysFileServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.List;
 
 @WebServlet("/file/*")
 @MultipartConfig
 public class SysFileController extends BaseController {
 
+
     private final SysFileServiceImpl fileService = new SysFileServiceImpl();
     private static final String UPLOAD_DIR = "/home/upload"; // 修改为所需的目录
+
+    private void MakeSureFolderExists(String path) {
+        File file = new File(path);
+        if (!file.exists() && !file.isDirectory()) {
+            file.mkdirs();
+        }
+    }
 
     /**
      * 读取文件列表
@@ -26,6 +34,9 @@ public class SysFileController extends BaseController {
      * @throws IOException
      */
     protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
+        req.setCharacterEncoding("UTF-8");
+
         String userName = (String) req.getSession().getAttribute("username");
         String workDir = UPLOAD_DIR + "/" + userName;
 
@@ -40,6 +51,25 @@ public class SysFileController extends BaseController {
         req.setAttribute("username", userName + "的文件");
 
         req.setAttribute("allFiles", files);
+        super.processTemplate("homepage", req, resp);
+    }
+
+    /**
+     * 搜索文件
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String query = req.getParameter("query");
+        String username = (String) req.getSession().getAttribute("username");
+
+        List<File> files = fileService.searchFiles(username, query);
+
+        req.setAttribute("allFiles", files);
+        req.setAttribute("username", username + "的文件");
         super.processTemplate("homepage", req, resp);
     }
 
@@ -71,10 +101,8 @@ public class SysFileController extends BaseController {
         String realPath = UPLOAD_DIR + "/" + userName;
 
         // 检查用户的文件夹是否存在，如果不存在，那么创建一个新的文件夹
-        File dir = new File(realPath);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
+        MakeSureFolderExists(realPath);
+
         File file = new File(realPath + fileName);
         if (file.exists()) {
             String overwrite = req.getParameter("overwrite");
@@ -99,17 +127,17 @@ public class SysFileController extends BaseController {
         resp.getWriter().close();
     }
 
-    private void MakeSureFolderExists(String path) {
-        File file = new File(path);
-        if (!file.exists() && !file.isDirectory()) {
-            file.mkdirs();
-        }
-    }
-
+    /**
+     * 删除文件
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String fileName = req.getParameter("fileName");
-        String userPath = getServletContext().getRealPath("/upload");
         String userName = (String) req.getSession().getAttribute("username");
         File file = new File(UPLOAD_DIR + "/" + userName + "/" + fileName);
 
@@ -124,11 +152,17 @@ public class SysFileController extends BaseController {
 
     }
 
+    /**
+     * 下载文件
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void download(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 从请求参数中获取文件名
         String fileName = req.getParameter("fileName");
-        // 获取应用的根目录的真实路径
-        String userPath = req.getServletContext().getRealPath("/upload");
         // 获取用户名
         String userName = (String) req.getSession().getAttribute("username");
         // 构造文件路径

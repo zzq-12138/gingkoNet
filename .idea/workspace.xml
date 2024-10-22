@@ -2,59 +2,65 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="schedule_system" />
       <artifact name="schedule_system:war exploded" />
+      <artifact name="schedule_xss" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2b12ba3-7aa7-44af-b637-e8bf2fd7b637" name="Changes" comment="第五次提交">
-      <change afterPath="$PROJECT_DIR$/done.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/SysFileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/listenter/SessionListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/srcWeb0726.01.rar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/srcWeb072901.rar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/homepage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/regist.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/registSuccess.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/html/homepage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/html/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/html/regist.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/html/registSuccess.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/info.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/homepage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/regist.js" afterDir="false" />
+    <list default="true" id="a2b12ba3-7aa7-44af-b637-e8bf2fd7b637" name="Changes" comment="2024.09.04 01">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/schedule_xss.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/easycode.ignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/easycode/codeContext.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/easycode/codebase-v2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/easycode/rc-output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bugs.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/bugs.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/010.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/img/011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report/report.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/img/background_o.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/img/night.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/jquery-2.1.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/xss1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/xss2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/todo.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/jdbc.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/jdbc.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/DeleteFileServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/DownloadServlert.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/ListFileServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/LogoutServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/done.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/SysFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/SysFileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/SysUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/SysUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/UploadServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/ViewBaseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/controller/ViewBaseServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/dao/SysScheduleDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/dao/impl/SysScheduleDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/pojo/SysSchedule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/pojo/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/pojo/SysUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/service/SysScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/SysFileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/service/impl/SysScheduleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/impl/SysFileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/test/TestBaseDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/test/TestLombok.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/test/TestMD5Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/test/TestSysScheduleDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/homepage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/service/SysFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/SysFileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/atguigu/schedule/service/impl/SysFileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/atguigu/schedule/service/impl/SysFileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcWeb0726.01.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcWeb072901.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/regist.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/regist.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/html/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/html/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/html/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/html/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/html/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/html/regist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/regist.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/registSuccess.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/static/img/ginkgo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/ginkgo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/static/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/regist.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/regist.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +104,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -109,48 +118,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;JavaScript Debug.allfiles.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.homepage.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.login.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.regist.html.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.86.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Java/JavaCode/schedule_system/src/com/atguigu/schedule/controller&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;F:/Java/JavaCode/schedule_system/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "JavaScript Debug.allfiles.html.executor": "Run",
+    "JavaScript Debug.homepage.html.executor": "Run",
+    "JavaScript Debug.login.html.executor": "Run",
+    "JavaScript Debug.regist.html.executor": "Run",
+    "JavaScript 调试.homepage.html.executor": "Run",
+    "JavaScript 调试.login.html.executor": "Run",
+    "Node.js.xss1.js.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 9.0.86.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "F:/Java/JavaCode/schedule_system/web/js",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "F:/Java/JavaCode/schedule_system/src/Main.java",
+    "project.structure.last.edited": "工件",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.atguigu.schedule.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Java\JavaCode\schedule_system\src\com\atguigu\schedule\controller" />
       <recent name="F:\Java\JavaCode\schedule_system\web\js" />
+      <recent name="F:\Java\JavaCode\schedule_system\report" />
+      <recent name="F:\Java\JavaCode\schedule_system\src\com\atguigu\schedule\controller" />
       <recent name="F:\Java\JavaCode\schedule_system\web" />
       <recent name="F:\Java\JavaCode\schedule_system\src" />
-      <recent name="F:\Java\JavaCode\schedule_system" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Java\JavaCode\schedule_system\web\html" />
@@ -160,7 +173,7 @@
       <recent name="F:\Java\JavaCode\schedule_system\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.86">
+  <component name="RunManager" selected="JavaScript 调试.homepage.html">
     <configuration name="allFiles.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/schedule_system/web/allFiles.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -171,6 +184,9 @@
       <method v="2" />
     </configuration>
     <configuration name="regist.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/schedule_system/web/html/regist.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="xss1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/web/js/xss1.js" working-dir="$PROJECT_DIR$/web/js">
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 9.0.86" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.86" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -265,26 +281,25 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JavaScript Debug.homepage.html" />
-      <item itemvalue="JavaScript Debug.allFiles.html" />
-      <item itemvalue="JavaScript Debug.login.html" />
-      <item itemvalue="JavaScript Debug.regist.html" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.86" />
+      <item itemvalue="JavaScript 调试.allFiles.html" />
+      <item itemvalue="JavaScript 调试.homepage.html" />
+      <item itemvalue="JavaScript 调试.login.html" />
+      <item itemvalue="JavaScript 调试.regist.html" />
+      <item itemvalue="Node.js.xss1.js" />
+      <item itemvalue="Tomcat 服务器.Tomcat 9.0.86" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.regist.html" />
-        <item itemvalue="JavaScript Debug.login.html" />
-        <item itemvalue="JavaScript Debug.homepage.html" />
-        <item itemvalue="JavaScript Debug.allFiles.html" />
+        <item itemvalue="JavaScript 调试.homepage.html" />
+        <item itemvalue="JavaScript 调试.login.html" />
+        <item itemvalue="Node.js.xss1.js" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -358,7 +373,16 @@
       <workItem from="1725416065271" duration="345000" />
       <workItem from="1725416424912" duration="4129000" />
       <workItem from="1725429822733" duration="268000" />
-      <workItem from="1725430109590" duration="1591000" />
+      <workItem from="1725430109590" duration="2228000" />
+      <workItem from="1725434577738" duration="9797000" />
+      <workItem from="1725947846385" duration="196000" />
+      <workItem from="1726051148213" duration="2063000" />
+      <workItem from="1726057337348" duration="4456000" />
+      <workItem from="1727054006988" duration="616000" />
+      <workItem from="1727163436789" duration="474000" />
+      <workItem from="1727163947861" duration="2580000" />
+      <workItem from="1727180715626" duration="12643000" />
+      <workItem from="1727221632774" duration="8186000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交">
       <option name="closed" value="true" />
@@ -408,7 +432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715932822310</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="2024.09.04 01">
+      <option name="closed" value="true" />
+      <created>1725431896952</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1725431896953</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,6 +453,7 @@
     <MESSAGE value="第三次提交" />
     <MESSAGE value="第四次提交" />
     <MESSAGE value="第五次提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="第五次提交" />
+    <MESSAGE value="2024.09.04 01" />
+    <option name="LAST_COMMIT_MESSAGE" value="2024.09.04 01" />
   </component>
 </project>

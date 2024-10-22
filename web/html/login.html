@@ -7,27 +7,18 @@
     <script src="../js/login.js"></script>
 </head>
 <body>
-
-<table class="tab-login">
-    <tr>
-        <td>
-            <h1 class="ht">银杏网盘</h1>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <h3 class="ht">欢迎登录</h3>
-        </td>
-    </tr>
-</table>
-<form method="post" action="/schedule_system/user/login" onsubmit="return checkForm()">
+<main>
+<form id="registForm" method="post" action="/schedule_xss/user/login" onsubmit="return checkForm()" class="form">
     <table class="tab">
+
+        <tr>
+               <td><span><h1 class="ht" style="text-align:center;font-family: Comic Sans MS;">银杏网盘Login</h1></span></td>
+        </tr>
         <tr class="empty-col">
         </tr>
         <tr class="ltr">
-            <td> 账号</td>
             <td>
-                <input class="ipt" type="text" id="usernameInput" name="username" onblur="checkUsername()">
+                <div style="display: flex; justify-content: space-between;gap:1px;margin-left: 50px"><span style="font-family: Comic Sans MS;font-size:20px;color: white"> username:<input class="ipt" type="text" id="usernameInput" name="username" onblur="checkUsername()"></div></span>
             </td>
         </tr>
         <tr>
@@ -39,9 +30,8 @@
             </td>
         </tr>
         <tr class="ltr">
-            <td>密码</td>
             <td>
-                <input class="ipt" type="password" id="userPwdInput"  name="userPwd" onblur="checkUserPwd()">
+                <div style="display: flex; justify-content: space-between;gap:1px;margin-left: 50px"><span style="font-family: Comic Sans MS;font-size:20px;color: white">password:<input class="ipt" type="password" id="userPwdInput"  name="userPwd" onblur="checkUserPwd()"></div></span>
             </td>
         <tr>
             <td>
@@ -54,16 +44,17 @@
         </tr>
         <tr class="ltr">
             <td colspan="2" class="buttonContainer">
-                <input class="btn" type="submit" value="登录" id="Btn" autofocus onmouseover="changeBtnColor()" onmouseleave="recoverBtnColor()" >
+                <input style="border:none;" class="btn" type="submit" value="登录" id="Btn" autofocus onmouseover="changeBtnColor()" onmouseleave="recoverBtnColor()" >
             </td>
         </tr>
         <tr class="ltr">
             <td colspan="2" class="buttonContainer">
                 <input class="btn1" type="reset" value="重置" id="Btn1" onmouseover="changeBtn1Color()" onmouseleave="recoverBtn1Color()">
-                <button class="btn1" id="Btn2" onmouseover="changeBtn2Color()" onmouseleave="recoverBtn2Color()"><a href="http://121.36.97.80:8080/schedule_system/html/regist.html">去注册</a></button>
+                <button class="btn1" id="Btn2" onmouseover="changeBtn2Color()" onmouseleave="recoverBtn2Color()"><a href="http://121.36.97.80:8080/schedule_xss/html/regist.html">去注册</a></button>
             </td>
         </tr>
     </table>
 </form>
+</main>
 </body>
 </html>
