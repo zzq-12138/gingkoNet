@@ -27,3 +27,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+### Maven build ###
+target/
+
+### Local IDE data (may contain DB credentials) ###
+.idea/dataSources.local.xml
+.idea/dataSources/

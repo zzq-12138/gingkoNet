@@ -1,0 +1,661 @@
+<passage file_path=/src/com/atguigu/schedule/util/JDBCUtil.java>
+package com.atguigu.schedule.util;
+
+
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class JDBCUtil {
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/util/JDBCUtil.java>
+public class JDBCUtil {
+    private static ThreadLocal<Connection> threadLocal =new ThreadLocal<>();
+
+    private static DataSource dataSource;
+    // 初始化连接池
+    static{
+        // 可以帮助我们读取.properties配置文件
+        Properties properties =new Properties();
+        InputStream resourceAsStream = JDBCUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");
+        try {
+            properties.load(resourceAsStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            dataSource = DruidDataSourceFactory.createDataSource(properties);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    /*1 向外提供连接池的方法*/
+    public static DataSource getDataSource(){
+        return dataSource;
+    }
+
+    /*2 向外提供连接的方法*/
+    public static Connection getConnection(){
+        Connection connection = threadLocal.get();
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/controller/BaseController.java>
+public class BaseController extends ViewBaseServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+        String requestURI = req.getRequestURI();
+        String[] split = requestURI.split("/");
+        String methodName =split[split.length-1];
+        // 通过反射获取要执行的方法
+        Class clazz = this.getClass();
+        try {
+            Method method=clazz.getDeclaredMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+            // 设置方法可以访问
+            method.setAccessible(true);
+            // 通过反射执行代码
+            method.invoke(this,req,resp);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+}
+</passage>
+<passage file_path=/src/com/atguigu/schedule/test/TestBaseDao.java>
+package com.atguigu.schedule.test;
+
+import com.atguigu.schedule.dao.BaseDao;
+import com.atguigu.schedule.pojo.SysUser;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.util.List;
+
+public class TestBaseDao {
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/dao/impl/SysUserDaoImpl.java>
+package com.atguigu.schedule.dao.impl;
+
+import com.atguigu.schedule.dao.BaseDao;
+import com.atguigu.schedule.dao.SysUserDao;
+import com.atguigu.schedule.pojo.SysUser;
+
+import java.util.List;
+
+public class SysUserDaoImpl extends BaseDao implements SysUserDao {
+
+    @Override
+    public int addSysUser(SysUser sysUser) {
+        String sql = "insert into sys_user values(Default, ?, ?)";
+        return baseUpdate(sql, sysUser.getUsername(), sysUser.getUserPwd());
+    }
+    @Override
+    public SysUser findByUsername(String username) {
+        String sql = "select uid, username, user_pwd userPwd from sys_user where username = ?";
+        List<SysUser> sysUserList = baseQuery(SysUser.class, sql, username);
+        return sysUserList != null && !sysUserList.isEmpty() ? sysUserList.getFirst() : null;
+    }
+}
+</passage>
+<passage file_path=/src/com/atguigu/schedule/controller/BaseController.java>
+package com.atguigu.schedule.controller;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.lang.reflect.Method;
+
+public class BaseController extends ViewBaseServlet {
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/dao/BaseDao.java>
+package com.atguigu.schedule.dao;
+
+
+import com.atguigu.schedule.util.JDBCUtil;
+
+import java.lang.reflect.Field;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BaseDao {
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/util/JDBCUtil.java>
+        Connection connection = threadLocal.get();
+        if (null == connection) {
+            try {
+                connection = dataSource.getConnection();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            threadLocal.set(connection);
+        }
+
+        return connection;
+    }
+
+
+    /*定义一个归还连接的方法 (解除和ThreadLocal之间的关联关系) */
+    public static void releaseConnection(){
+        Connection connection = threadLocal.get();
+        if (null != connection) {
+            threadLocal.remove();
+            // 把连接设置回自动提交的连接
+            try {
+                connection.setAutoCommit(true);
+                // 自动归还到连接池
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+}
+</passage>
+<passage file_path=/web/WEB-INF/web.xml>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <context-param>
+        <param-name>view-prefix</param-name>
+        <param-value>/</param-value>
+    </context-param>
+    <context-param>
+        <param-name>view-suffix</param-name>
+        <param-value>.html</param-value>
+    </context-param>
+</web-app>
+</passage>
+<passage file_path=/src/com/atguigu/schedule/test/TestBaseDao.java>
+public class TestBaseDao {
+
+    private static BaseDao baseDao;
+
+    @BeforeClass
+    public static void initBaseDao(){
+        baseDao=new BaseDao();
+    }
+
+    @Test
+    public void testBaseQueryObject(){
+        // 查询用户数量  baseQueryObject 查询结果集是单行 单列的 一个值的数据的方法
+        String sql ="select count(*) from sys_user";
+        Long count = baseDao.baseQueryObject(Long.class, sql);
+        System.out.println(count);
+    }
+
+
+    @Test
+    public void testBaseQuery(){
+        String sql ="select uid,username,user_pwd userPwd from sys_user";
+        List<SysUser> sysUserList = baseDao.baseQuery(SysUser.class, sql);
+        sysUserList.forEach(System.out::println);
+    }
+
+    @Test
+    public void testBaseUpdate(){
+        String sql ="insert into sys_schedule values(DEFAULT,?,?,?)";
+
+        int rows = baseDao.baseUpdate(sql, 1, "学习JAVA", 0);
+        System.out.println(rows);
+    }
+
+
+
+
+}
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/pojo/SysUser.java>
+package com.atguigu.schedule.pojo;
+
+import lombok.*;
+
+@AllArgsConstructor//生成全参构造器
+@NoArgsConstructor//生成无参构造器
+@Data//生成get set方法
+
+
+public class SysUser {
+    private Integer uid;
+    private String username;
+    private String userPwd;
+
+    
+}
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/service/impl/SysUserServiceImpl.java>
+package com.atguigu.schedule.service.impl;
+
+import com.atguigu.schedule.dao.SysUserDao;
+import com.atguigu.schedule.dao.impl.SysUserDaoImpl;
+import com.atguigu.schedule.pojo.SysUser;
+import com.atguigu.schedule.service.SysUserService;
+import com.atguigu.schedule.util.MD5Util;
+
+public class SysUserServiceImpl implements SysUserService {
+
+    private SysUserDao userDao = new SysUserDaoImpl();
+
+    @Override
+    public int regist(SysUser sysUser) {
+
+
+        // 将用户的明文密码加密为密文密码
+        sysUser.setUserPwd(MD5Util.encrypt(sysUser.getUserPwd()));
+
+        // 调用dao层方法，将用户信息保存到数据库
+        // 返回值为受影响的行数
+
+        return userDao.addSysUser(sysUser);
+    }
+
+    @Override
+    public SysUser findByUsername(String username) {
+
+        return userDao.findByUsername(username);
+    }
+}
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/dao/SysUserDao.java>
+package com.atguigu.schedule.dao;
+
+/*
+* Data Access Object for SysUser
+* 用于定义针对SysUser的数据访问操作
+* */
+
+import com.atguigu.schedule.pojo.SysUser;
+
+public interface SysUserDao {
+
+    /**
+     * 该方法用于将用户信息保存到数据库（增加一条用户记录）
+     * @param sysUser 封装了用户信息的SysUser对象（username 和 userPwd）
+     * @return 返回受影响的行数
+     */
+    int addSysUser(SysUser sysUser);
+
+    /**
+     * 根据用户名查询用户信息
+     * @param username 用户名
+     * @return 返回查询到的用户信息，如果没有查询到则返回null
+     */
+    SysUser findByUsername(String username);
+}
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/service/SysUserService.java>
+package com.atguigu.schedule.service;
+
+
+import com.atguigu.schedule.pojo.SysUser;
+
+/**
+ * 该接口定义了以sys_user表为对象的相关操作
+ */
+public interface SysUserService {
+    /**
+     * 该方法用于处理用户注册请求
+     * @param sysUser 封装了用户注册信息的SysUser对象
+     * @return 返回注册结果，成功返回1，失败返回0
+     */
+    int regist(SysUser sysUser);
+
+    /**
+     * 根据用户名查询用户信息
+     * @param username 用户名
+     * @return 返回查询到的用户信息，如果没有查询到则返回null
+     */
+    SysUser findByUsername(String username);
+}
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/test/TestLombok.java>
+package com.atguigu.schedule.test;
+
+import com.atguigu.schedule.pojo.SysUser;
+
+public class TestLombok {
+
+    public void testAnnotation(){
+        SysUser user =new SysUser(1,"root1","abc123");
+    }
+
+}
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/dao/BaseDao.java>
+public class BaseDao {
+    // 公共的查询方法  返回的是单个对象
+    public <T> T baseQueryObject(Class<T> clazz, String sql, Object ... args) {
+        T t = null;
+        Connection connection = JDBCUtil.getConnection();
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/dao/BaseDao.java>
+            preparedStatement = connection.prepareStatement(sql);
+            // 设置语句上的参数
+            for (int i = 0; i < args.length; i++) {
+                preparedStatement.setObject(i + 1, args[i]);
+            }
+
+            // 执行 查询
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                t = (T) resultSet.getObject(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (null != resultSet) {
+                try {
+
+</passage>
+<passage file_path=/src/com/atguigu/schedule/test/TestMD5Util.java>
+package com.atguigu.schedule.test;
+
+import com.atguigu.schedule.util.MD5Util;
+import org.junit.Test;
+
+public class TestMD5Util {
+
+    @Test
+    public void testEncrypt() {
+        String encrypt = MD5Util.encrypt("123456");
+        System.out.println(encrypt);
+    }
+}
+</passage>
+<passage file_path=/src/com/atguigu/schedule/util/MD5Util.java>
+package com.atguigu.schedule.util;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+public final class MD5Util {
+
+</passage>
+<passage file_path=/web/loginUserPwdError.html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>登录失败,密码有误,请求<a href="login.html">重新登录</a></h1>
+
+</body>
+</html>
+</passage>
+<passage file_path=/src/com/atguigu/schedule/util/MD5Util.java>
+public final class MD5Util {
+    public static String encrypt(String strSrc) {
+        try {
+            char hexChars[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8',
+                    '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+            byte[] bytes = strSrc.getBytes();
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(bytes);
+            bytes = md.digest();
+            int j = bytes.length;
+            char[] chars = new char[j * 2];
+            int k = 0;
+            for (int i = 0; i < bytes.length; i++) {
+                byte b = bytes[i];
+                chars[k++] = hexChars[b >>> 4 & 0xf];
+                chars[k++] = hexChars[b & 0xf];
+            }
+            return new String(chars);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            throw new RuntimeException("MD5加密出错!!!");
+        }
+    }
+}
+</passage>
+<passage file_path=/web/showSchedule.html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>以下是您的网盘界面</h1>
+<form action="upload" method="post" enctype="multipart/form-data">
+    文件:<input type="file" name="myfile" />
+    可选名:<input type="text" name="fileName"/>
+    <button type="submit">上传</button>
+</form>
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th>名称</th>-->
+<!--    </tr>-->
+<!--    <tr th:each="f:${allfiles}">-->
+<!--        <td th:text="${f.getName()}">文件名</td>-->
+<!--    </tr>-->
+<!--</table>-->
+<form action="/fileList" method="get">
+    <button type="submit">获取文件列表</button>
+</form>
+</body>
+</html>
+
+</passage>
+<passage file_path=/web/static/js/login.js>
+        reUserPwdMsg01.innerText = "提示:";
+        reUserPwdMsg02.innerText = "两次密码不一致";
+        return false;
+    }
+    reUserPwdMsg01.innerText = "";
+    reUserPwdMsg02.innerText = "OK";
+    return true;
+}
+
+//鼠标在登录按钮上悬停时，改变按钮的颜色,鼠标移开时恢复颜色,鼠标变为手型
+function changeBtnColor() {
+    var Btn = document.getElementById("Btn");
+    Btn.style.backgroundColor = "#6c5f1a";
+    Btn.style.cursor = "pointer";
+}
+
+//鼠标移开时恢复按钮颜色
+function recoverBtnColor() {
+    var Btn = document.getElementById("Btn");
+    Btn.style.backgroundColor = "#ffd700";
+}
+
+function changeBtn1Color(){
+    var Btn1 = document.getElementById("Btn1");
+    Btn1.style.backgroundColor = "#6c5f1a";
+    Btn1.style.cursor = "pointer";
+}
+
+function recoverBtn1Color(){
+    var Btn1 = document.getElementById("Btn1");
+    Btn1.style.backgroundColor = "antiquewhite";
+}
+
+function changeBtn2Color(){
+    var Btn2 = document.getElementById("Btn2");
+    Btn2.style.backgroundColor = "#6c5f1a";
+
+</passage>
+<passage file_path=/web/regist.html>
+<form method="post" action="/user/regist" onsubmit="return checkForm()">
+    <table class="tab" >
+        <tr class="ltr">
+            <td>请输入账号</td>
+            <td>
+                <input class="ipt" type="text" id="usernameInput" name="username" onblur="checkUsername()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="usernameMsg01" class="empty-row"></span>
+            </td>
+            <td>
+                <span id="usernameMsg02" class="empty-row"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td>请输入密码</td>
+            <td>
+                <input class="ipt" type="password" id="userPwdInput"  name="userPwd" onblur="checkUserPwd()">
+            </td>
+        <tr>
+            <td>
+                <span id="userPwdMsg01" class="empty-row"></span>
+            </td>
+            <td>
+                <span id="userPwdMsg02" class="empty-row"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td>确认密码</td>
+
+</passage>
+<passage file_path=/web/static/js/login.js>
+    // 定义正则表示字符串的规则,用户名必须以字母开头，长度在5-16之间,并且只能是字母数字下划线
+    var usernameReg = /^[a-zA-Z]\w{4,15}$/;
+    // 获得用户输入的信息
+    var usernameInput = document.getElementById("usernameInput");
+    var username = usernameInput.value;
+    // 获得格式提示的框
+    var usernameMsg01 = document.getElementById("usernameMsg01");
+    var usernameMsg02 = document.getElementById("usernameMsg02");
+    // 格式有误返回false，在页面上提示
+    if(!usernameReg.test(username)){
+        usernameMsg01.innerHTML = "提示:";
+        usernameMsg02.innerHTML = "必须以字母开头且长度在5-10之间";
+        return false;
+    }
+    // 格式正确时,返回true，在页面上提示OK
+    usernameMsg01.innerText="";
+    usernameMsg02.innerText="OK";
+    return true;
+}
+
+// 校验密码是否符合格式
+function checkUserPwd(){
+    // 定义正则表示字符串的规则
+    var  userPwdReg= /^[0-9]{6}$/;
+    // 获得用户在页面上输入的信息
+    var userPwdInput =document.getElementById("userPwdInput");
+    var userPwd = userPwdInput.value;
+    // 获得格式提示的框
+    var userPwdMsg01 =document.getElementById("userPwdMsg01");
+
+</passage>
+<passage file_path=/web/loginUsernameError.html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>登录失败,账户有误,请求<a href="login.html">重新登录</a></h1>
+
+</body>
+</html>
+</passage>
+<passage file_path=/web/registSuccess.html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>注册成功,请立刻去<a href="login.html">登录</a></h1>
+
+</body>
+</html>
+</passage>
+<passage file_path=/web/regist.html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script src="static/js/login.js"></script>
+    <link rel="stylesheet" href="static/css/login.css">
+
+</head>
+<body>
+
+</passage>
+<passage file_path=/web/static/js/login.js>
+    Btn2.style.backgroundColor = "#6c5f1a";
+    Btn2.style.cursor = "pointer";
+}
+
+function recoverBtn2Color(){
+    var Btn2 = document.getElementById("Btn2");
+    Btn2.style.backgroundColor = "antiquewhite";
+}
+</passage>
+<passage file_path=/web/regist.html>
+            <td>确认密码</td>
+            <td>
+                <input class="ipt" id="reUserPwdInput" type="password" name="reUserPwd" onblur="reCheckReUserPwd()">
+            </td>
+        <tr>
+            <td>
+                <span id="reUserPwdMsg01" class="empty-row"></span>
+            </td>
+            <td>
+                <span id="reUserPwdMsg02" class="empty-row"></span>
+            </td>
+        </tr>
+        <tr class="ltr">
+            <td colspan="2" class="buttonContainer">
+                <input class="btn" type="submit" value="注册" id="Btn" autofocus onmouseover="changeBtnColor()" onmouseleave="recoverBtnColor()">
+                <input class="btn1" type="reset" value="重置" id="Btn1" onmouseover="changeBtn1Color()" onmouseleave="recoverBtn1Color()">
+                <button class="btn1" id="Btn2" onmouseover="changeBtn2Color()" onmouseleave="recoverBtn2Color()"><a  href="login.html">去登录</a></button>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+
+
+</body>
+</html>
+</passage>
+<passage file_path=/web/registFail.html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>注册失败,用户名可能被已注册,请<a href="regist.html">重新注册</a></h1>
+
+</body>
+</html>
+</passage>

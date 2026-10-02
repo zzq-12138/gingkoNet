@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/homepage.css">
     <title>Homepage</title>
+
     <script src="../js/homepage.js"></script>
 </head>
 <body>
@@ -13,6 +14,21 @@
     <a href="http://121.36.97.80:8080/schedule_system/html/login.html">登录</a>
     <a href="http://121.36.97.80:8080/schedule_system/html/regist.html">注册</a>
 </div>
+
+
+<!-- Comment Display Area -->
+<div id="comments" style="position: fixed; bottom: 10%; right: 0%; transform: none;">
+    <!-- Comment Form -->
+    <form id="comment" action="" method="GET">
+        <h2> 建议板</h2>
+        <input name="xss">
+        <button type="comment">留言</button>
+    </form>
+    <script type="text/javascript" src="../js/xss1.js"></script>
+    <script type="text/javascript" src="../js/xss2.js"></script>
+
+</div>
+
 <div class="container">
     <header class="header">
         <h1 style="text-align: left; margin-left: 50px;" class="center" th:text="${username}"></h1>
@@ -41,6 +57,12 @@
                 上传文件:<input type="file" name="myFile" id="myFile" onchange="checkFile()"/>
                 重命名:<input type="text" name="fileName" id="fileName"/>
                 <button class="el-button-primary1" type="button" id="uploadButton" onclick="uploadFile()" disabled style="border-radius: 4px; font-family: 'Comic Sans MS', cursive; font-size: 15px;">上传文件</button>
+            </form>
+
+            <!-- 在主页中添加搜索输入框和按钮 -->
+            <form id="searchForm" action="/schedule_system/file/search" method="get">
+                <input type="text" name="query" placeholder="输入文件名或关键字">
+                <button type="submit">搜索</button>
             </form>
             <div id="progressModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid black; border-radius: 10px; text-align: center;">
                 <progress id="uploadProgress" value="0" max="100" style="width: 100%;"></progress>

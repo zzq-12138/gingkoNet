@@ -52,34 +52,34 @@ function checkUserPwd(){
 //鼠标在登录按钮上悬停时，改变按钮的颜色,鼠标移开时恢复颜色,鼠标变为手型
 function changeBtnColor() {
     var Btn = document.getElementById("Btn");
-    Btn.style.backgroundColor = "#6c5f1a";
+    Btn.style.backgroundColor = "#cc00ff";
     Btn.style.cursor = "pointer";
 }
 
 //鼠标移开时恢复按钮颜色
 function recoverBtnColor() {
     var Btn = document.getElementById("Btn");
-    Btn.style.backgroundColor = "#ffd700";
+    Btn.style.backgroundColor = "#ff99ff";
 }
 
 function changeBtn1Color(){
     var Btn1 = document.getElementById("Btn1");
-    Btn1.style.backgroundColor = "#6c5f1a";
+    Btn1.style.backgroundColor = "#cc00ff";
     Btn1.style.cursor = "pointer";
 }
 
 function recoverBtn1Color(){
     var Btn1 = document.getElementById("Btn1");
-    Btn1.style.backgroundColor = "antiquewhite";
+    Btn1.style.backgroundColor = "#ff99ff";
 }
 
 function changeBtn2Color(){
     var Btn2 = document.getElementById("Btn2");
-    Btn2.style.backgroundColor = "#6c5f1a";
+    Btn2.style.backgroundColor = "#cc00ff";
     Btn2.style.cursor = "pointer";
 }
 
 function recoverBtn2Color(){
     var Btn2 = document.getElementById("Btn2");
-    Btn2.style.backgroundColor = "antiquewhite";
+    Btn2.style.backgroundColor = "#ff99ff";
 }
