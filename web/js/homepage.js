@@ -4,7 +4,7 @@ window.onload = function() {
 
 function checkLoginStatus() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/schedule_system/user/checkLogin', true);
+    xhr.open('GET', '/schedule/user/checkLogin', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
@@ -74,7 +74,7 @@ function uploadFile() {
     formData.append('fileName', newFileNameInput.value); // 将重命名字段的值添加到表单数据中
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/schedule_system/file/upload', true);
+    xhr.open('POST', '/schedule/file/upload', true);
 
     xhr.upload.onprogress = function (event) {
         if (event.lengthComputable) {
@@ -96,12 +96,12 @@ function uploadFile() {
             var overwrite = confirm('文件已经存在，是否要覆盖文件？');
             if (overwrite) {
                 formData.append('overwrite', 'true');
-                xhr.open('POST', '/schedule_system/file/upload', true);
+                xhr.open('POST', '/schedule/file/upload', true);
                 xhr.send(formData);
             } else {
                 var newFileName = prompt('请输入新的文件名：');
                 formData.set('fileName', newFileName); // 更新表单数据中的文件名
-                xhr.open('POST', '/schedule_system/file/upload', true);
+                xhr.open('POST', '/schedule/file/upload', true);
                 xhr.send(formData);
             }
         } else if (xhr.status === 200) {
@@ -120,7 +120,7 @@ function uploadFile() {
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault();
     var query = document.querySelector('input[name="query"]').value;
-    fetch('/schedule_system/file/search?query=' + encodeURIComponent(query))
+    fetch('/schedule/file/search?query=' + encodeURIComponent(query))
         .then(response => response.json())
         .then(data => {
             // 处理搜索结果
